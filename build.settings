@@ -1,0 +1,53 @@
+-- Supported values for orientation:
+-- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+
+settings = {
+	
+	orientation = {
+		default = "portrait",
+		supported = { "portrait", }
+	},
+	
+	iphone = {
+		plist = {
+			UIStatusBarHidden = false,
+			UIPrerenderedIcon = true, -- set to false for "shine" overlay
+			
+			--アンコメント
+			UIApplicationExitsOnSuspend = false,
+			
+      		--追記
+            MinimumOSVersion="7.0",
+			CFBundleLocalizations = {
+        		"ja",
+        		"en",
+      		},
+        }
+	},
+	
+	--アンコメント
+	-- Android permissions
+	androidPermissions = {
+  		"android.permission.INTERNET",
+  		"android.permission.CAMERA",
+    	"android.permission.WRITE_EXTERNAL_STORAGE",
+  	},
+  	
+  	--追記
+  	plugins =
+    {
+        --key is the name passed to Lua's 'require()'
+        ["CoronaProvider.native.popup.social"] =
+        {
+            --required
+            publisherId = "com.coronalabs",
+        },
+        
+        -- key is the name passed to Lua's 'require()'
+        ["CoronaProvider.ads.admob"] =
+        {
+            -- required
+            publisherId = "com.coronalabs",
+        },
+    },
+}
