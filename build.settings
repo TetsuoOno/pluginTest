@@ -28,7 +28,7 @@ settings = {
             }
             --]]
             
-			MinimumOSVersion="7.0",
+			MinimumOSVersion = "7.0",
 			CFBundleLocalizations = {
         		"ja",
         		"en",
