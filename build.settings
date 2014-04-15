@@ -12,41 +12,66 @@ settings = {
 		plist = {
 			UIStatusBarHidden = false,
 			UIPrerenderedIcon = true, -- set to false for "shine" overlay
+			--UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
 			
-			--アンコメント
-			UIApplicationExitsOnSuspend = false,
-			
-      		--追記
-            MinimumOSVersion="7.0",
+			--[[
+            -- iOS app URL schemes:
+            CFBundleURLTypes =
+            {
+                {
+                    CFBundleURLSchemes =
+                    {
+                        "fbXXXXXXXXXXXXXX", -- example scheme for facebook
+                        "coronasdkapp", -- example second scheme
+                    }
+                }
+            }
+            --]]
+            
+			MinimumOSVersion="7.0",
 			CFBundleLocalizations = {
         		"ja",
         		"en",
       		},
+      		
         }
 	},
 	
-	--アンコメント
+	
 	-- Android permissions
 	androidPermissions = {
+  		--インターネットへのアクセス権限
   		"android.permission.INTERNET",
+  		--カメラ機能へのアクセス権源
   		"android.permission.CAMERA",
+    	--データ保存の権限
     	"android.permission.WRITE_EXTERNAL_STORAGE",
   	},
   	
-  	--追記
+  	--プラグイン
   	plugins =
     {
-        --key is the name passed to Lua's 'require()'
-        ["CoronaProvider.native.popup.social"] =
+        --AdMobのプラグイン
+        ["CoronaProvider.ads.admob"] =
         {
-            --required
+            --パブリッシャーID
             publisherId = "com.coronalabs",
         },
         
-        -- key is the name passed to Lua's 'require()'
-        ["CoronaProvider.ads.admob"] =
+        --[[
+        --iAdのプラグインの場合
+        ["CoronaProvider.ads.iads"] =
         {
-            -- required
+            --パブリッシャーID
+            publisherId = "com.coronalabs",
+            supportedPlatforms = { iphone=true, ["iphone-sim"]=true },
+        },
+        --]]
+        
+        --ソーシャル連携のプラグイン
+        ["CoronaProvider.native.popup.social"] =
+        {
+            --required
             publisherId = "com.coronalabs",
         },
     },
